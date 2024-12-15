@@ -14,7 +14,7 @@ CREATE TABLE stars (
     constellation_id INT,
     right_ascension FLOAT NOT NULL CHECK (right_ascension BETWEEN 0 AND 360),
     declination FLOAT NOT NULL CHECK (declination BETWEEN -90 AND 90),
-    magnitude FLOAT NOT NULL CHECK (magnitude > 0),
+    magnitude FLOAT,
     distance_light_years FLOAT NOT NULL CHECK (distance_light_years > 0),
     FOREIGN KEY (constellation_id) REFERENCES constellations(constellation_id)
 );
@@ -51,7 +51,6 @@ CREATE TABLE historical_facts (
     fact_id SERIAL PRIMARY KEY,
     constellation_id INT,
     fact_text TEXT NOT NULL,
-    discovery_year INT CHECK (discovery_year > 0 AND discovery_year <= EXTRACT(YEAR FROM CURRENT_DATE)),
     FOREIGN KEY (constellation_id) REFERENCES constellations(constellation_id)
 );
 
