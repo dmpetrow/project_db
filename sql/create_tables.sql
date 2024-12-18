@@ -10,7 +10,7 @@ CREATE TABLE constellations (
 -- Таблица звезд
 CREATE TABLE stars (
     star_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL UNIQUE,
     constellation_id INT,
     right_ascension FLOAT NOT NULL CHECK (right_ascension BETWEEN 0 AND 360),
     declination FLOAT NOT NULL CHECK (declination BETWEEN -90 AND 90),
